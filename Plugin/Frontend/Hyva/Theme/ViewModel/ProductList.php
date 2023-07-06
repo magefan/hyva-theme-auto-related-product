@@ -8,7 +8,7 @@ declare(strict_types=1);
 namespace Hyva\MagefanAutoRelatedProduct\Plugin\Frontend\Hyva\Theme\ViewModel;
 
 use Magefan\AutoRelatedProduct\Api\RelatedItemsProcessorInterface;
-use Magento\Framework\View\Element\AbstractBlock;
+use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\LayoutInterface;
 
 class ProductList
@@ -55,9 +55,9 @@ class ProductList
             return $result;
         }
 
-        $abstractBlock = $this->layout->createBlock(AbstractBlock::class);
+        $template = $this->layout->createBlock(Template::class);
 
-        $result = $this->relatedItemsProcessor->execute($abstractBlock, $result, 'product_into_' . $linkType);
+        $result = $this->relatedItemsProcessor->execute($template, $result, 'product_into_' . $linkType);
 
         if (!is_array($result) && method_exists($result, 'getItems')) {
             $result = $result->getItems();
@@ -75,8 +75,8 @@ class ProductList
      */
     public function afterGetCrosssellItems($subject, $result)
     {
-        $abstractBlock = $this->layout->createBlock(AbstractBlock::class);
-        $result = $this->relatedItemsProcessor->execute($abstractBlock, $result, 'cart_into_crossSell');
+        $template = $this->layout->createBlock(Template::class);
+        $result = $this->relatedItemsProcessor->execute($template, $result, 'cart_into_crossSell');
 
         if (!is_array($result) && method_exists($result, 'getItems')) {
             $result = $result->getItems();
