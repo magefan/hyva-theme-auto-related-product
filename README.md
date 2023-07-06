@@ -7,11 +7,9 @@
 
 <img width="150" height="100" src="https://magefan.com/media/wysiwyg/made_in_ukraine.jpg">
 
-It is an integration module between Hyva Theme and [Magento 2 Auto-Related Products](https://magefan.com/magento2-blog-extension) by Magefan.
+It is an integration module between Hyva Theme and [Magento 2 Auto-Related Products](https://magefan.com/magento-2-automatic-related-products) by Magefan.
 
 If you use Magento 2 Auto-Related Products Plus, then use [magefan/hyva-theme-auto-related-product-plus](https://github.com/magefan/hyva-theme-auto-related-product-plus)
-
-If you use Magento 2 Auto-Related Products Extra, then use [magefan/hyva-theme-auto-related-product-extra](https://github.com/magefan/hyva-theme-auto-related-product-extra)
 
 <a href="https://github.com/magefan/hyva-theme-auto-related-product/archive/refs/heads/main.zip"><img width="190" height="70" src="https://magefan.com/media/wysiwyg/download-now_1.png"></a>
 
@@ -31,7 +29,7 @@ bin/magento setup:static-content:deploy
 ## Support
 If you have any issues, please [contact us](mailto:support@magefan.com)
 then if you still need help, open a bug report in GitHub's
-[issue tracker](https://github.com/magefan/hyva-theme-auto-related-product/issues).
+[issue tracker](https://github.com/magefan/module-auto-related-product/issues).
 
 ## Need More Features?
 Please contact us to get a quote
