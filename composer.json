@@ -1,0 +1,18 @@
+{
+    "name": "magefan/hyva-theme-auto-related-product",
+    "description": "Hyva Theme Magefan Auto Related Product",
+    "type": "magento2-module",
+    "require": {
+        "hyva-themes/magento2-compat-module-fallback": "*",
+        "magefan/module-auto-related-product": "*"
+    },
+    "version": "2.0.1",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Hyva\\MagefanAutoRelatedProduct\\": ""
+        }
+    }
+}
