@@ -11,7 +11,7 @@ It is an integration module between Hyva Theme and [Magento 2 Auto-Related Produ
 
 If you use Magento 2 Auto-Related Products Plus, then use [magefan/hyva-theme-auto-related-product-plus](https://github.com/magefan/hyva-theme-auto-related-product-plus)
 
-<a href="https://github.com/magefan/hyva-theme-auto-related-product/archive/refs/heads/main.zip"><img width="190" height="70" src="https://magefan.com/media/wysiwyg/download-now_1.png"></a>
+<a href="https://github.com/magefan/hyva-theme-auto-related-product/archive/refs/heads/main.zip"><img width="190" height="70" src="https://cm.magefan.com/wysiwyg/products/download-magefan-extensions.png"></a>
 
 
 ## Requirements
