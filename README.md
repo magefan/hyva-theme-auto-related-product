@@ -5,7 +5,7 @@
 
 It is an integration module between Hyva Theme and [Magento 2 Auto-Related Products](https://magefan.com/magento-2-automatic-related-products) by Magefan.
 
-If you use Magento 2 Auto-Related Products Plus, then use [magefan/hyva-theme-auto-related-product-plus](https://github.com/magefan/hyva-theme-auto-related-product-plus)
+If you use Magento 2 Auto-Related Products Plus, then you also need to install [magefan/hyva-theme-auto-related-product-plus](https://github.com/magefan/hyva-theme-auto-related-product-plus)
 
 <img align="right" width="120" height="70" src="https://magefan.com/media/wysiwyg/made_in_ukraine.jpg">
 
