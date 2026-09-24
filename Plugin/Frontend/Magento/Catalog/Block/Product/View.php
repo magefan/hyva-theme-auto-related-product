@@ -12,6 +12,7 @@ use Magefan\AutoRelatedProduct\Api\RelatedCollectionInterfaceFactory as RuleColl
 use Magento\Framework\View\LayoutInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magefan\AutoRelatedProduct\Model\ActionValidator;
+use Magento\Framework\Escaper;
 
 class View
 {
@@ -36,6 +37,11 @@ class View
     private $validator;
 
     /**
+     * @var Escaper
+     */
+    private $escaper;
+
+    /**
      * @var null
      */
     private $rules = null;
@@ -45,17 +51,68 @@ class View
      * @param StoreManagerInterface $storeManager
      * @param LayoutInterface $layout
      * @param ActionValidator $validator
+     * @param Escaper $escaper
      */
     public function __construct(
         RuleCollectionFactory $ruleCollectionFactory,
         StoreManagerInterface $storeManager,
         LayoutInterface $layout,
         ActionValidator $validator,
+        Escaper $escaper
     ) {
         $this->ruleCollectionFactory = $ruleCollectionFactory;
         $this->storeManager = $storeManager;
         $this->layout = $layout;
         $this->validator = $validator;
+        $this->escaper = $escaper;
+    }
+
+    /**
+     * Replace native related/upsell slider heading with rule block title
+     *
+     * @param $subject
+     * @param mixed $html
+     * @return mixed
+     */
+    public function afterToHtml($subject, $html)
+    {
+        if (!$html || !is_string($html)
+            || !in_array($subject->getData('type'), ['related', 'upsell'], true)
+        ) {
+            return $html;
+        }
+
+        // Title is set by RelatedItemsProcessor while the slider renders its items
+        $title = trim((string)$subject->getData('mfautorp_title'));
+        if ('' === $title) {
+            return $html;
+        }
+
+        $title = (string)__($title);
+
+        $result = preg_replace_callback(
+            '#(<(h[1-6])\b[^>]*>)(.*?)(</\2>)#s',
+            function ($matches) use ($title) {
+                return $matches[1] . $this->escaper->escapeHtml($title, ['span', 'p']) . $matches[4];
+            },
+            $html,
+            1
+        );
+
+        if (null === $result) {
+            return $html;
+        }
+
+        $ariaResult = preg_replace_callback(
+            '#(<section\b[^>]*\baria-label=")[^"]*(")#',
+            function ($matches) use ($title) {
+                return $matches[1] . $this->escaper->escapeHtmlAttr($title) . $matches[2];
+            },
+            $result,
+            1
+        );
+
+        return null === $ariaResult ? $result : $ariaResult;
     }
 
     /**
