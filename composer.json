@@ -4,9 +4,9 @@
     "type": "magento2-module",
     "require": {
         "hyva-themes/magento2-compat-module-fallback": "*",
-        "magefan/module-auto-related-product": ">=2.4.7"
+        "magefan/module-auto-related-product": ">=2.4.9"
     },
-    "version": "2.0.3",
+    "version": "2.0.4",
     "autoload": {
         "files": [
             "registration.php"
