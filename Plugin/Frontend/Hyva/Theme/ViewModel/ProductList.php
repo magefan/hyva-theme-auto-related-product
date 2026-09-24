@@ -55,9 +55,13 @@ class ProductList
             return $result;
         }
 
-        $template = $this->layout->createBlock(Template::class);
+        // Use native slider block so RelatedItemsProcessor can pass rule title to it
+        $block = $this->layout->getBlock($linkType);
+        if (!$block || $block->getData('type') !== $linkType) {
+            $block = $this->layout->createBlock(Template::class);
+        }
 
-        $result = $this->relatedItemsProcessor->execute($template, $result, 'product_into_' . $linkType);
+        $result = $this->relatedItemsProcessor->execute($block, $result, 'product_into_' . $linkType);
 
         if (!is_array($result) && method_exists($result, 'getItems')) {
             $result = $result->getItems();
